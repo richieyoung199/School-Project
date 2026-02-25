@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AEMO Marketplace</title>
+    <link rel="stylesheet" href="assest/css/marketplace.css" />
+  </head>
+  <body>
+    <header class="market-header">
+      <h1>AEMO Marketplace</h1>
+
+      <div class="trade-toggle">
+        <button class="active" id="buyBtn">Buy</button>
+        <button id="sellBtn">Sell</button>
+      </div>
+    </header>
+
+    <section class="filters">
+      <select id="currencySelect">
+        <option value="">Currency</option>
+        <option value="NGN">Naira (NGN)</option>
+        <option value="GHS">Cedi (GHS)</option>
+        <option value="KES">Kenyan Shilling (KES)</option>
+      </select>
+
+      <select id="amountSelect">
+        <option value="">Amount</option>
+        <option value="10000">10,000</option>
+        <option value="50000">50,000</option>
+        <option value="100000">100,000</option>
+        <option value="500000">500,000</option>
+      </select>
+
+      <select id="paymentSelect">
+        <option value="">Payment Method</option>
+        <option value="bank">Bank Transfer</option>
+        <option value="mobile">Mobile Money</option>
+        <option value="cash">Cash Deposit</option>
+      </select>
+
+      <button id="filterBtn">More Filters</button>
+    </section>
+
+    <!-- EXTRA FILTERS -->
+    <section class="extra-filters hidden" id="extraFilters">
+      <label> <input type="checkbox" /> Verified profiles only </label>
+      <label> <input type="checkbox" /> Currently active traders </label>
+      <label>
+        <input type="checkbox" /> Traders with past successful trades
+      </label>
+    </section>
+
+    <!-- TRADERS LIST -->
+    <section class="traders">
+      <div class="trader-card">
+        <div class="trader-info">
+          <h3>AEMO Demo Account</h3>
+          <span class="verified">✔ Verified</span>
+        </div>
+
+        <p>
+          Trades: NGN ⇄ GHS <br />
+          Payment: Bank Transfer
+        </p>
+
+        <div class="trader-meta">
+          <span>Rate: Market Rate</span>
+          <span>Completed Trades: 120</span>
+        </div>
+
+        <button class="trade-btn">Trade</button>
+      </div>
+    </section>
+
+    <!-- TRADE MODAL -->
+    <div class="modal hidden" id="tradeModal">
+      <div class="modal-box">
+        <h2>Start Trade</h2>
+
+        <p id="traderName">Trading with AEMO Demo Account</p>
+
+        <input
+          type="number"
+          id="tradeAmount"
+          placeholder="Enter amount"
+          min="1"
+        />
+
+        <p class="escrow-text" id="escrowText"></p>
+
+        <div class="modal-actions">
+          <button id="cancelTrade">Cancel</button>
+          <button id="confirmTrade">Confirm Trade</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assest/marketplace.js" defer></script>
+  </body>
+</html>

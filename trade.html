@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AEMO Trades</title>
+    <link rel="stylesheet" href="assest/css/trade.css" />
+  </head>
+  <body>
+    <header class="trade-header">
+      <button id="backBtn">← Back</button>
+
+      <h1>Trade History</h1>
+    </header>
+
+    <main class="trade-container">
+      <!-- HISTORY TABLE -->
+
+      <section class="history-section">
+        <h2>Your Transactions</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Pair</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="tradeTable">
+            <!-- JS FILLS THIS -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- INFO SECTION -->
+
+      <section class="info-section">
+        <h2>How Trading Works on AEMO</h2>
+
+        <ol>
+          <li>Select a verified trader from the marketplace.</li>
+
+          <li>Enter the amount you want to exchange.</li>
+
+          <li>Funds are held securely in AEMO escrow.</li>
+
+          <li>The exchanger completes the currency transfer.</li>
+
+          <li>You confirm receipt before funds are released.</li>
+
+          <li>Both users rate the transaction.</li>
+        </ol>
+
+        <p class="security-note">
+          🔒 AEMO protects users with escrow and verification systems to prevent
+          fraud.
+        </p>
+      </section>
+    </main>
+
+    <script src="assest/trade.js" defer></script>
+  </body>
+</html>

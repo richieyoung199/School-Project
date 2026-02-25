@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+  margin: 0;
+}
+
+.verify-container {
+  max-width: 450px;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.verify-container h1 {
+  margin-bottom: 10px;
+}
+
+.info-text {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+#verifyForm input,
+#verifyForm button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.upload-label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+#verifyForm button {
+  background: #198754;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#reviewMessage {
+  margin-top: 25px;
+  color: green;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}

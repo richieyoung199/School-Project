@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+}
+
+/* HEADER */
+
+.wallet-header {
+  background: #0b5ed7;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#wallet-header h1 {
+  margin: 0;
+}
+
+#backBtn {
+  background: white;
+  color: #0b5ed7;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* MAIN */
+
+.wallet-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+/* BALANCE */
+
+.balance-card {
+  background: white;
+  padding: 25px;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.balance-card h2 {
+  margin-bottom: 10px;
+}
+
+#balanceAmount {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #0b5ed7;
+}
+
+.currency {
+  color: #666;
+  font-size: 14px;
+}
+
+/* VERIFY */
+
+.verify-card {
+  background: white;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.verify-card h3 {
+  margin-top: 0;
+}
+
+.verify-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.verify-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #198754;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEMO — Browse Exchange Offers</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assest/css/stylesheet.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">AEMO</h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="offers.html">Browse Offers</a>
+        <a href="#">How It Works</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+      <h2>Browse Exchange Offers</h2>
+      <p>Select a currency pair and trade with verified exchangers.</p>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-section">
+      <select id="currencyFilter">
+        <option value="all">All Currency Pairs</option>
+        <option value="GHS-NGN">GHS → NGN</option>
+        <option value="NGN-GHS">NGN → GHS</option>
+        <option value="KES-UGX">KES → UGX</option>
+        <option value="ZAR-NGN">ZAR → NGN</option>
+      </select>
+    </section>
+
+    <!-- Offers List -->
+    <section class="offers-container" id="offersContainer">
+      <!-- Template cards (JavaScript will show/hide) -->
+
+      <div class="offer-card" data-pair="GHS-NGN">
+        <h3>GHS → NGN</h3>
+        <p><strong>Rate:</strong> 115 NGN</p>
+        <p><strong>Limits:</strong> 50–1,000 GHS</p>
+        <p><strong>Trader:</strong> KofiFX ✅</p>
+        <button class="btn-trade" onclick="tradeDemo('GHS → NGN', 'KofiFX')">
+          Trade
+        </button>
+      </div>
+
+      <div class="offer-card" data-pair="NGN-GHS">
+        <h3>NGN → GHS</h3>
+        <p><strong>Rate:</strong> 0.008 GHS</p>
+        <p><strong>Limits:</strong> 20,000–200,000 NGN</p>
+        <p><strong>Trader:</strong> NaijaEx ✔️</p>
+        <button class="btn-trade" onclick="tradeDemo('NGN → GHS', 'NaijaEx')">
+          Trade
+        </button>
+      </div>
+
+      <div class="offer-card" data-pair="KES-UGX">
+        <h3>KES → UGX</h3>
+        <p><strong>Rate:</strong> Market Rate</p>
+        <p><strong>Limits:</strong> 500–10,000 KES</p>
+        <p><strong>Trader:</strong> EastTrade ⭐</p>
+        <button class="btn-trade" onclick="tradeDemo('KES → UGX', 'EastTrade')">
+          Trade
+        </button>
+      </div>
+
+      <div class="offer-card" data-pair="ZAR-NGN">
+        <h3>ZAR → NGN</h3>
+        <p><strong>Rate:</strong> Negotiable</p>
+        <p><strong>Limits:</strong> 100–5,000 ZAR</p>
+        <p><strong>Trader:</strong> CapeEx ❇️</p>
+        <button class="btn-trade" onclick="tradeDemo('ZAR → NGN', 'CapeEx')">
+          Trade
+        </button>
+      </div>
+    </section>
+
+    <!-- Trade Modal (hidden until needed) -->
+    <div id="tradeModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3>Start Trade</h3>
+        <p id="tradeText"></p>
+        <p><em>Demo Mode — no real trade.</em></p>
+        <button class="btn-confirm" onclick="confirmTrade()">Confirm</button>
+      </div>
+    </div>
+
+    <script src="assest/offer.js"></script>
+  </body>
+</html>

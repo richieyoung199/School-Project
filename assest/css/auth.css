@@ -1,0 +1,155 @@
+:root {
+  --primary: #0f6b4f;
+  --secondary: #f2b705;
+  --dark: #1f2933;
+  --gray: #6b7280;
+  --light: #f9fafb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e6f4ef, #ffffff);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  background: white;
+  padding: 40px 35px;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.logo {
+  color: var(--primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--gray);
+  margin-bottom: 25px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: var(--secondary);
+  color: var(--dark);
+}
+
+.switch {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.switch a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* create account css */
+
+.choice-container {
+  max-width: 900px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.choice-container h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--gray);
+  margin-bottom: 40px;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.choice-card {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.choice-card h3 {
+  margin-bottom: 15px;
+}
+
+.choice-card p {
+  color: var(--gray);
+  margin-bottom: 25px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+@media (max-width: 700px) {
+  .choices {
+    grid-template-columns: 1fr;
+  }
+}

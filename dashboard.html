@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AEMO Dashboard</title>
+    <link rel="stylesheet" href="assest/css/dashboard.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>AEMO</h1>
+      <nav>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="wallet.html">Wallet</a>
+        <a href="trade.html">Trades</a>
+        <button id="logoutBtn">Logout</button>
+      </nav>
+    </header>
+
+    <main class="dashboard">
+      <!-- BALANCE SECTION -->
+      <section class="balance-card">
+        <h2>Current Balance</h2>
+        <p class="balance" id="balanceText">₦0.00</p>
+
+        <div class="limits">
+          <div>
+            <span>Trading limit</span>
+            <strong>Buy / Sell: 5,000,000</strong>
+          </div>
+          <div>
+            <span>Send</span>
+            <strong>5,000,000</strong>
+          </div>
+        </div>
+
+        <button
+          class="primary-btn"
+          onclick="window.location.href = 'verify.html'"
+        >
+          Trade without limits
+        </button>
+      </section>
+
+      <!-- QUICK ACTIONS -->
+      <section class="quick-actions">
+        <div class="action-card">
+          <h3>Marketplace</h3>
+          <p>Buy and sell African currencies.</p>
+          <a href="marketplace.html">Go to marketplace</a>
+        </div>
+
+        <div class="action-card">
+          <h3>Wallet</h3>
+          <p>View balance or fund your account.</p>
+          <a href="wallet.html">Open wallet</a>
+        </div>
+
+        <div class="action-card">
+          <h3>Trades</h3>
+          <p>View your transaction history.</p>
+          <a href="trades.html">View trades</a>
+        </div>
+      </section>
+
+      <!-- CURRENCIES -->
+      <section class="list-section">
+        <h3>Supported African Currencies</h3>
+        <div class="tag-list">
+          <span>NGN – Naira</span>
+          <span>GHS – Cedi</span>
+          <span>KES – Kenyan Shilling</span>
+          <span>ZAR – Rand</span>
+          <span>XOF – CFA Franc</span>
+          <span>UGX – Ugandan Shilling</span>
+          <span>EGP – Egyptian Pound</span>
+        </div>
+      </section>
+
+      <!-- PAYMENT METHODS -->
+      <section class="list-section">
+        <h3>Supported Payment Methods</h3>
+        <div class="tag-list">
+          <span>Bank Transfer</span>
+          <span>Mobile Money</span>
+          <span>Cash Deposit</span>
+          <span>USSD</span>
+          <span>Local Payment Agents</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="assest/dashboard.js" defer></script>
+  </body>
+</html>

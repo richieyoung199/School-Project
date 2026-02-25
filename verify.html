@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AEMO Verification</title>
+    <link rel="stylesheet" href="assest/css/verify.css" />
+  </head>
+  <body>
+    <div class="verify-container">
+      <h1>Account Verification</h1>
+
+      <p class="info-text">Verify your identity to trade without limits.</p>
+
+      <form id="verifyForm">
+        <input type="text" id="fullName" placeholder="Full Name" required />
+
+        <input type="date" id="dob" required />
+
+        <label class="upload-label">
+          Upload ID Document
+          <input type="file" id="idFile" accept="image/*,.pdf" required />
+        </label>
+
+        <button type="submit">Submit for Review</button>
+      </form>
+
+      <div id="reviewMessage" class="hidden">
+        <h3>✅ Information Submitted</h3>
+
+        <p>
+          Your information is being reviewed.<br />
+          You will receive a message after verification.
+        </p>
+      </div>
+    </div>
+
+    <script src="assest/js/verify.js" defer></script>
+  </body>
+</html>
