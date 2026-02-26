@@ -26,24 +26,26 @@ loginForm.addEventListener("submit", function (e) {
 
   fetch("http://localhost:3000/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
   })
-    .then((res) => {
-      console.log("Login response status", res.status);
-      return res.json();
-    })
+    .then((res) => res.json())
     .then((data) => {
-      console.log("Login response data", data);
-      if (data.error) {
-        alert(data.error);
-      } else {
-        localStorage.setItem("aemoUser", JSON.stringify(data));
+      if (data.success) {
+        // Save user
+        localStorage.setItem("aemoUser", JSON.stringify(data.user));
+
         window.location.href = "dashboard.html";
+      } else {
+        alert(data.error);
       }
     })
     .catch((err) => {
-      console.error("Fetch error", err);
-      alert("Server error");
+      console.log("Login error:", err);
     });
 });

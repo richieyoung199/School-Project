@@ -1,35 +1,60 @@
-console.log("REGISTER USER JS RUNNING");
+console.log("Register JS Loaded");
 
-const form = document.getElementById("userRegisterForm");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("userRegisterForm");
 
-if (!form) {
-  console.error("❌ userRegisterForm not found");
-}
+  if (!form) {
+    console.error("Register form still missing!");
+    return;
+  }
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+  console.log("Register form found");
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  fetch("http://localhost:3000/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirmPassword").value;
+
+    if (!name || !email || !password || !confirm) {
+      alert("Fill all fields");
+      return;
+    }
+
+    if (password !== confirm) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const data = {
       name,
       email,
       password,
-      role: "trader",
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
-        alert("Account created successfully");
+      role: "user",
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert("Account created successfully!");
         window.location.href = "login.html";
       } else {
-        alert(data.error);
+        alert(result.error || "Registration failed");
       }
-    });
+    } catch (err) {
+      console.error(err);
+      alert("Backend not running");
+    }
+  });
 });

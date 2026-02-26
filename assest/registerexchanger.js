@@ -15,21 +15,27 @@ exchangerForm.addEventListener("submit", function (e) {
 
   fetch("http://localhost:3000/register", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       name,
       email,
       password,
-      role: "exchanger",
+      role,
     }),
   })
     .then((res) => res.json())
     .then((data) => {
       if (data.success) {
-        alert("Exchanger account created");
+        alert("Account created successfully!");
+
         window.location.href = "login.html";
       } else {
         alert(data.error);
       }
+    })
+    .catch((err) => {
+      console.log("Register error:", err);
     });
 });

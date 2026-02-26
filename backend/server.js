@@ -1,4 +1,4 @@
-console.log("SERVER FILE LOADED");
+console.log("SERVER STARTING...");
 
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
@@ -6,67 +6,105 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const db = new sqlite3.Database("./database.db");
+const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-db.serialize(() => {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      email TEXT UNIQUE NOT NULL,
-      password TEXT NOT NULL,
-      role TEXT NOT NULL
-    )
-  `);
+// Database
+const db = new sqlite3.Database("./database.db", (err) => {
+  if (err) {
+    console.error("DB Error:", err);
+  } else {
+    console.log("Database connected");
+  }
 });
 
-app.post("/register", (req, res) => {
-  console.log("🔥 REGISTER ENDPOINT HIT");
-  console.log("📦 BODY RECEIVED:", req.body);
+// Create users table
+db.run(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    email TEXT UNIQUE,
+    password TEXT,
+    role TEXT
+  )
+`);
 
+// ================= REGISTER =================
+
+app.post("/register", (req, res) => {
   const { name, email, password, role } = req.body;
 
   if (!name || !email || !password || !role) {
-    console.log("❌ MISSING FIELDS");
-    return res.status(400).json({ error: "Missing fields" });
+    return res.status(400).json({
+      error: "All fields are required",
+    });
   }
 
-  const sql =
-    "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)";
-
-  db.run(sql, [name, email, password, role], function (err) {
-    if (err) {
-      console.log("❌ SQL ERROR:", err.message);
-      return res.status(400).json({ error: err.message });
+  // Check if email exists
+  db.get("SELECT id FROM users WHERE email = ?", [email], (err, user) => {
+    if (user) {
+      return res.status(409).json({
+        error: "Account already exists. Please login.",
+      });
     }
 
-    console.log("✅ USER SAVED WITH ID:", this.lastID);
-    res.json({ success: true });
+    // Insert user
+    db.run(
+      "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)",
+      [name, email, password, role],
+      function (err) {
+        if (err) {
+          return res.status(500).json({
+            error: "Registration failed",
+          });
+        }
+
+        res.json({
+          success: true,
+        });
+      },
+    );
   });
 });
+
+// ================= LOGIN =================
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).json({
+      error: "Missing login details",
+    });
+  }
+
   db.get(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
+    "SELECT id, name, email, role FROM users WHERE email = ? AND password = ?",
     [email, password],
     (err, user) => {
       if (!user) {
-        return res.status(401).json({ error: "Invalid login details" });
+        return res.status(401).json({
+          error: "Wrong email or password",
+        });
       }
-      res.json(user);
+
+      res.json({
+        success: true,
+        user,
+      });
     },
   );
 });
 
+// Test route
 app.get("/test", (req, res) => {
-  res.send("AEMO backend is working");
+  res.send("Backend working");
 });
 
-app.listen(3000, () => {
-  console.log("AEMO backend running on http://localhost:3000");
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

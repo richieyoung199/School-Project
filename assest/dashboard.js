@@ -23,4 +23,10 @@ document.getElementById("balanceText").textContent =
 document.getElementById("logoutBtn").addEventListener("click", () => {
   localStorage.removeItem("aemoUser");
   window.location.href = "login.html";
+
+  const user = JSON.parse(localStorage.getItem("aemoUser"));
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
 });

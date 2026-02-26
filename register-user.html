@@ -3,28 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AEMO — Trading Account</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- <link rel="stylesheet" href="css/global.css" /> -->
+    <title>Create Account | AEMO</title>
+
     <link rel="stylesheet" href="assest/css/auth.css" />
   </head>
   <body>
     <div class="auth-container">
-      <h1 class="logo">AEMO</h1>
-      <h2>Create Trading Account</h2>
-      <p class="subtitle">Browse and trade exchange offers</p>
+      <h1>AEMO</h1>
+      <h2>Create Account</h2>
 
+      <!-- IMPORTANT: ID MUST MATCH JS -->
       <form id="userRegisterForm">
-        <input id="name" type="text" placeholder="Full Name" required />
-        <input id="email" type="email" placeholder="Email Address" required />
-        <input id="password" type="password" placeholder="Password" required />
+        <input type="text" id="name" placeholder="Full Name" required />
+
+        <input type="email" id="email" placeholder="Email" required />
+
+        <input type="password" id="password" placeholder="Password" required />
+
         <input
-          id="confirmPassword"
           type="password"
+          id="confirmPassword"
           placeholder="Confirm Password"
           required
         />
@@ -33,6 +32,7 @@
       </form>
     </div>
 
-    <script src="assest/register.js"></script>
+    <!-- LOAD JS LAST -->
+    <script src="assest/register.js" defer></script>
   </body>
 </html>
