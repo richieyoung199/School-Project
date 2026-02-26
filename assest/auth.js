@@ -24,7 +24,7 @@ loginForm.addEventListener("submit", function (e) {
 
   console.log("Submitting login", { email, passwordLength: password.length });
 
-  fetch("http://localhost:3000/login", {
+  fetch("https://aemo-backend.onrender.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

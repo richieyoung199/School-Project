@@ -13,7 +13,7 @@ exchangerForm.addEventListener("submit", function (e) {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  fetch("http://localhost:3000/register", {
+  fetch("https://aemo-backend.onrender.com/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
